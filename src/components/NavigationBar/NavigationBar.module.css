@@ -1,0 +1,32 @@
+.NavBar {
+    display: flex;
+    justify-content: left;
+    align-content: center;
+    width: 100%;
+}
+
+.NavBar ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    align-content: center;
+}
+
+.NavBar li {
+    margin: 0 1em 0 1em;
+}
+
+.NavBar li a {
+    text-decoration: none;
+    color: white;
+}
+
+.NavBar li a:hover {
+    text-decoration: underline;
+    color: #ee1515;
+}
+
+.Logo {
+    width: 8%;
+}
+
