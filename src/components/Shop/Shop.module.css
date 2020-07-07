@@ -1,0 +1,7 @@
+.Shop {
+    display: flex;
+    flex-direction: row;
+    max-height: 90vh;
+    align-items: flex-start;
+    align-content: center;
+}

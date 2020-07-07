@@ -1,0 +1,20 @@
+.Cart {
+    flex-grow: 8;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 2vmin;
+}
+
+.CartBox {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid antiquewhite;
+    margin-right: 1%;
+}
+
+.Badge {
+    border-radius: 50%;
+    border: 1px solid white;
+    margin: 10px;
+}
