@@ -1,0 +1,53 @@
+.CartView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.Items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.ItemQuantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.QuantityInput {
+    width: 15%;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.QuantityInput:hover {
+    box-shadow: 2px 2px 2px #AAA;
+}
+
+.RemoveItemButton {
+    border: none;
+    background-color: transparent;
+    color: #ee1515;
+    margin-left: 10%;
+}
+
+.RemoveItemButton:hover {
+    box-shadow: 2px 2px 2px #AAA;
+    border-radius: 25%;
+}

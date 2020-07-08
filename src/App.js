@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import './App.css';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './components/Home/Home';
-import Shop from './components/Shop/Shop';
-import {UserAccount} from './components/UserAccount/UserAccount';
+import Loading from './components/Loading/Loading';
+import CartView from './components/Shop/Cart/CartView/CartView';
+
+const Shop = React.lazy(() => import('./components/Shop/Shop'));
+const UserAccount = React.lazy(() => import('./components/UserAccount/UserAccount'));
 
 const App = () => {
   return (
@@ -19,10 +22,19 @@ const App = () => {
                 <Home/>
               </Route>
               <Route exact path={'/shop'}>
-                <Shop/>
+                <Suspense fallback={<Loading />}>
+                  <Shop/>
+                </Suspense>
               </Route>
               <Route exact path={'/account'}>
-                <UserAccount/>
+                <Suspense fallback={<Loading />}>
+                  <UserAccount/>
+                </Suspense>
+              </Route>
+              <Route exact path={'/cart'}>
+                <Suspense fallback={<Loading />}>
+                  <CartView />
+                </Suspense>
               </Route>
             </Switch>
           </section>

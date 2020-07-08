@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import pokeball from '../../assets/pokeball.png'
 import styles from './Home.module.css';
 import {FaQuoteLeft, FaQuoteRight} from 'react-icons/all';
+import {hideCart} from '../../actions/navBar.actions';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
+const Home = (props) => {
 
-const Home = () => {
+  useEffect(() => {
+    props.hideCart();
+  });
+
   return (
       <div className={styles.Home}>
         <span className={styles.Description}>
@@ -12,8 +19,17 @@ const Home = () => {
         </span>
         <img className={styles.Pokeball} alt={'Pokeball'} src={pokeball}/>
       </div>
+  );
+};
 
-  )
+const mapDispatchToProps = dispatch => {
+  return {
+    hideCart: () => dispatch(hideCart())
+  };
+};
+
+Home.propTypes = {
+  hideCart: PropTypes.func
 }
 
-export default Home;
+export default connect(null, mapDispatchToProps)(Home);

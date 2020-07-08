@@ -13,7 +13,7 @@
     animation: pulse 0.8s;
 }
 
-.PokemonItem:hover {
+.PokemonItemHover:hover {
     border: 1px solid #FE5F55;
     box-shadow: 1px 1px 1px #FE5F55;
     border-radius: 5px;

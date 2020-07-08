@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
+import {displayCart} from '../../actions/navBar.actions';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-export class UserAccount extends Component {
+class UserAccount extends Component {
+
+  componentDidMount() {
+    this.props.displayCart();
+  }
+
   render() {
     return (
         <div>
@@ -9,3 +17,15 @@ export class UserAccount extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    displayCart: () => dispatch(displayCart())
+  }
+};
+
+UserAccount.propTypes = {
+  displayCart: PropTypes.func
+}
+
+export default connect(null, mapDispatchToProps)(UserAccount);

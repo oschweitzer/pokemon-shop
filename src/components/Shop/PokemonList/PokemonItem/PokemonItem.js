@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import styles from './PokemonItem.module.css';
 import * as axios from 'axios';
 import {connect} from 'react-redux';
-import {addPokemon} from '../../../../actions/cart.actions';
+import {addItem} from '../../../../actions/cart.actions';
 import PropTypes from 'prop-types';
 
 class PokemonItem extends Component {
@@ -24,23 +24,31 @@ class PokemonItem extends Component {
   }
 
   pokemonSelectionHandler = () => {
-    this.setState({
-      addAnimation: true
-    }, () => {
-      // Trick to remove the animation class so it can be used again
-      setTimeout(() => {
-        this.setState({addAnimation: false}) },
-          500
-      );
-    });
-    this.props.onAddItem({id: this.state.pokedexNumber, name: this.state.name});
+    if (!this.props.disabled) {
+      this.setState({
+        addAnimation: true
+      }, () => {
+        // Trick to remove the animation class so it can be used again
+        setTimeout(() => {
+              this.setState({addAnimation: false}) },
+            500
+        );
+      });
+      this.props.onAddItem({
+        id: this.state.pokedexNumber,
+        name: this.state.name,
+        url: this.props.pokemonUrl,
+      });
+    }
   }
 
   render() {
-    let classes = this.state.addAnimation ? [styles.PokemonItem,
-      styles.AddedToCartAnimation].join(' ') : styles.PokemonItem;
+    const basicCssClasses = this.props.disabled ? styles.PokemonItem : [styles.PokemonItem, styles.PokemonItemHover].join(' ');
+    const finalCssClasses = this.state.addAnimation ? [basicCssClasses,
+      styles.AddedToCartAnimation].join(' ') : basicCssClasses;
+
     return (
-        <div className={classes} onClick={this.pokemonSelectionHandler}>
+        <div className={finalCssClasses} onClick={this.pokemonSelectionHandler}>
           <img alt={`Pokemon ${this.state.name}`} src={this.state.imageUrl} />
           <span className={styles.PokemonTextData}>#{this.state.pokedexNumber}</span>
           <span className={styles.PokemonTextData}>{this.state.name}</span>
@@ -51,13 +59,14 @@ class PokemonItem extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItem: (pokemon) => dispatch(addPokemon(pokemon))
+    onAddItem: (pokemon) => dispatch(addItem(pokemon))
   }
 }
 
 PokemonItem.propTypes = {
   pokemonUrl: PropTypes.string,
-  onAddItem: PropTypes.func
+  onAddItem: PropTypes.func,
+  disabled: PropTypes.bool
 }
 
 export default connect(null, mapDispatchToProps)(PokemonItem);
