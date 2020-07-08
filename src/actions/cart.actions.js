@@ -1,4 +1,4 @@
-import {ADD_ITEM, REMOVE_ITEM, UPDATE_QUANTITY} from './constants';
+import {ADD_ITEM, REMOVE_ALL_ITEMS, REMOVE_ITEM, UPDATE_QUANTITY} from './constants';
 
 export const addItem = (pokemon) => {
   return {
@@ -22,3 +22,9 @@ export const updateQuantity = (id, value) => {
     value
   };
 };
+
+export const removeAllItems = () => {
+  return {
+    type: REMOVE_ALL_ITEMS
+  }
+}

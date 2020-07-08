@@ -43,11 +43,26 @@
 .RemoveItemButton {
     border: none;
     background-color: transparent;
-    color: #ee1515;
+    color: #bd3736;
     margin-left: 10%;
 }
 
 .RemoveItemButton:hover {
     box-shadow: 2px 2px 2px #AAA;
     border-radius: 25%;
+}
+
+.SubmitButton {
+    border: none;
+    background-color: #56CBF9;
+    border-radius: 5px;
+    padding: 20%;
+    font-weight: bold;
+    color: white;
+}
+
+.SubmitButton:hover {
+    box-shadow: 2px 2px 2px #AAA;
+    background-color: #00AF54;
+
 }

@@ -1,4 +1,4 @@
-import {ADD_ITEM, REMOVE_ITEM, UPDATE_QUANTITY} from '../actions/constants';
+import {ADD_ITEM, REMOVE_ALL_ITEMS, REMOVE_ITEM, UPDATE_QUANTITY} from '../actions/constants';
 
 const initialState = {
   items : [],
@@ -43,6 +43,12 @@ const cartReducer = (state=initialState, action) => {
       return {
         items: newItems,
         total: newTotal
+      }
+    }
+    case REMOVE_ALL_ITEMS: {
+      return {
+        items: [],
+        total: 0
       }
     }
     default:
