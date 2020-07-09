@@ -1,18 +1,18 @@
-import {DISPLAY_CART, HIDE_CART} from '../actions/constants';
+import { DISPLAY_CART, HIDE_CART } from '../actions/constants';
 
 const initialState = {
-  displayCart: false
+  displayCart: false,
 };
 
-const navBarReducer = (state=initialState, action) => {
+const navBarReducer = (state = initialState, action) => {
   switch (action.type) {
     case DISPLAY_CART:
       return {
-        displayCart: true
+        displayCart: true,
       };
     case HIDE_CART:
       return {
-        displayCart: false
+        displayCart: false,
       };
     default:
       return state;

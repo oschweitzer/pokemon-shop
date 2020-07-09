@@ -1,30 +1,34 @@
-import {ADD_ITEM, REMOVE_ALL_ITEMS, REMOVE_ITEM, UPDATE_QUANTITY} from './constants';
+import {
+  ADD_ITEM,
+  REMOVE_ALL_ITEMS,
+  REMOVE_ITEM,
+  UPDATE_QUANTITY,
+} from './constants';
 
 export const addItem = (pokemon) => {
   return {
     type: ADD_ITEM,
-    pokemon
+    pokemon,
   };
 };
 
 export const removeItem = (id) => {
   return {
     type: REMOVE_ITEM,
-    id
+    id,
   };
 };
-
 
 export const updateQuantity = (id, value) => {
   return {
     type: UPDATE_QUANTITY,
     id,
-    value
+    value,
   };
 };
 
 export const removeAllItems = () => {
   return {
-    type: REMOVE_ALL_ITEMS
-  }
-}
+    type: REMOVE_ALL_ITEMS,
+  };
+};

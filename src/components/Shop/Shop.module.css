@@ -1,7 +1,37 @@
 .Shop {
     display: flex;
-    flex-direction: row;
-    max-height: 90vh;
-    align-items: flex-start;
+    flex-direction: column;
     align-content: center;
+    justify-content: flex-start;
+    width: 80%;
+    height: inherit;
+    max-height: 90vh;
+}
+
+.Shop h2 {
+    align-self: flex-start;
+    font-weight: bold;
+}
+
+.FiltersBar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.FiltersBar select {
+    border: none;
+    border-radius: 5px;
+    width: 10%;
+    margin-left: 2%;
+    background-color: white;
+}
+
+.FiltersBar select:focus {
+    outline: none;
 }

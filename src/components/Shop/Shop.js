@@ -1,36 +1,57 @@
-import React, {Component} from 'react';
-import {PokemonList} from './PokemonList/PokemonList';
+import React, { Component } from 'react';
+import PokemonList from './PokemonList/PokemonList';
 import styles from './Shop.module.css';
-import {displayCart} from '../../actions/navBar.actions';
-import {connect} from 'react-redux';
+import { displayCart } from '../../actions/navBar.actions';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Shop extends Component {
+  state = {
+    maxItemsPerPage: 10,
+  };
 
   componentDidMount() {
     this.props.displayCart();
   }
 
+  onItemsPerPageSelectionHandler = (event) => {
+    event.persist();
+    this.setState({
+      maxItemsPerPage: event.target.value,
+    });
+  };
+
   render() {
     return (
-        <div className={styles.Shop}>
-          <div>
-            {/* Filter and search bar */}
-          </div>
-          <PokemonList />
+      <div className={styles.Shop}>
+        <div className={styles.FiltersBar}>
+          {/* Filter and search bar */}
+          <label htmlFor={'itemsPerPage'}>Items per page</label>
+          <select
+            name={'itemsPerPage'}
+            value={this.state.maxItemsPerPage}
+            onChange={this.onItemsPerPageSelectionHandler}
+          >
+            <option value={10}>10</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
         </div>
+        <h2>Pokemon</h2>
+        <PokemonList maxItemsPerPage={+this.state.maxItemsPerPage} />
+      </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    displayCart: () => dispatch(displayCart())
-  }
+    displayCart: () => dispatch(displayCart()),
+  };
 };
 
 Shop.propTypes = {
-  displayCart: PropTypes.func
-}
+  displayCart: PropTypes.func,
+};
 
 export default connect(null, mapDispatchToProps)(Shop);

@@ -1,9 +1,12 @@
+.MainContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .List {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 80%;
-    margin-left: 10%;
 }

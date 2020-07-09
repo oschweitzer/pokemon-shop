@@ -1,31 +1,26 @@
-import React, {Component} from 'react';
-import {displayCart} from '../../actions/navBar.actions';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { displayCart } from '../../actions/navBar.actions';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class UserAccount extends Component {
-
   componentDidMount() {
     this.props.displayCart();
   }
 
   render() {
-    return (
-        <div>
-          Nothing here for now.
-        </div>
-    );
+    return <div>Nothing here for now.</div>;
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    displayCart: () => dispatch(displayCart())
-  }
+    displayCart: () => dispatch(displayCart()),
+  };
 };
 
 UserAccount.propTypes = {
-  displayCart: PropTypes.func
-}
+  displayCart: PropTypes.func,
+};
 
 export default connect(null, mapDispatchToProps)(UserAccount);

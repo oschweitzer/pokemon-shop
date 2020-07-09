@@ -3,17 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {combineReducers, createStore} from 'redux';
+import { combineReducers, createStore } from 'redux';
 import cartReducer from './reducers/cartReducer';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import navBarReducer from './reducers/navBarReducer';
 
-const rootReducer = combineReducers(
-    {
-      cartReducer,
-      navBarReducer
-    }
-)
+const rootReducer = combineReducers({
+  cartReducer,
+  navBarReducer,
+});
 const store = createStore(rootReducer);
 
 ReactDOM.render(
@@ -22,7 +20,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
