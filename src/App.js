@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Loading from './components/Loading/Loading';
 import CartView from './components/Shop/Cart/CartView/CartView';
+import Order from './components/Order/Order';
 
 const Shop = React.lazy(() => import('./components/Shop/Shop'));
 const UserAccount = React.lazy(() =>
@@ -36,6 +37,11 @@ const App = () => {
             <Route exact path={'/cart'}>
               <Suspense fallback={<Loading />}>
                 <CartView />
+              </Suspense>
+            </Route>
+            <Route exact path={'/order/recap'}>
+              <Suspense fallback={<Loading />}>
+                <Order />
               </Suspense>
             </Route>
           </Switch>

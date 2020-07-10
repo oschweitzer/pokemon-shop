@@ -1,11 +1,17 @@
 .CartView {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100%;
     width: 80%;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: inherit;
+    max-height: 90vh;
+    margin-top: 5%;
+}
+
+.CartView h2 {
+    align-self: flex-start;
+    font-weight: bold;
 }
 
 .Items {
@@ -64,5 +70,4 @@
 .SubmitButton:hover {
     box-shadow: 2px 2px 2px #AAA;
     background-color: #00AF54;
-
 }

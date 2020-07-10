@@ -1,0 +1,52 @@
+.Recap {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: flex-start;
+    align-items: center;
+    height: inherit;
+    max-height: 90vh;
+    margin-top: 5%;
+}
+
+.Recap h2 {
+    align-self: flex-start;
+    font-weight: bold;
+}
+
+.Recap button {
+    width: 15%;
+    border: none;
+    background-color: #56CBF9;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+}
+
+.Recap button:hover {
+    box-shadow: 2px 2px 2px #AAA;
+    background-color: #00AF54;
+}
+
+.PrintButton {
+    background-color: #FE5F55 !important;
+}
+
+.RecapTable th, td {
+    border: 1px solid #AAAAAA;
+}
+
+.RecapTable {
+    border-collapse: collapse;
+    margin: 1%;
+    width: 100%;
+}
+
+.Actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}

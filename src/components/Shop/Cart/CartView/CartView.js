@@ -26,15 +26,14 @@ class CartView extends Component {
   };
 
   onSubmitHandler = () => {
-    this.props.removeAllItems();
-    this.props.history.push('/');
+    this.props.history.push('/order/recap');
   };
 
   render() {
     let cartView = <h2>Your cart is empty</h2>;
     if (this.props.pokemon.length > 0) {
       cartView = (
-        <React.Fragment>
+        <div className={styles.CartView}>
           <h2>Your cart</h2>
           <div className={styles.Items}>
             {this.props.pokemon.map((pokemon) => {
@@ -76,10 +75,10 @@ class CartView extends Component {
               Order
             </button>
           </form>
-        </React.Fragment>
+        </div>
       );
     }
-    return <div className={styles.CartView}>{cartView}</div>;
+    return cartView;
   }
 }
 
