@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import PokemonItem from '../../PokemonList/PokemonItem/PokemonItem';
+import PokemonItem from '../Shop/PokemonList/PokemonItem/PokemonItem';
 import styles from './CartView.module.css';
-import { displayCart } from '../../../../actions/navBar.actions';
+import { displayCart } from '../../actions/navBar.actions';
 import {
   removeAllItems,
   removeItem,
   updateQuantity,
-} from '../../../../actions/cart.actions';
+} from '../../actions/cart.actions';
 import { FaTrashAlt } from 'react-icons/all';
 import { withRouter } from 'react-router-dom';
+import Section from '../../hoc/Section';
 
 class CartView extends Component {
   componentDidMount() {
@@ -33,7 +34,7 @@ class CartView extends Component {
     let cartView = <h2>Your cart is empty</h2>;
     if (this.props.pokemon.length > 0) {
       cartView = (
-        <div className={styles.CartView}>
+        <React.Fragment>
           <h2>Your cart</h2>
           <div className={styles.Items}>
             {this.props.pokemon.map((pokemon) => {
@@ -75,7 +76,7 @@ class CartView extends Component {
               Order
             </button>
           </form>
-        </div>
+        </React.Fragment>
       );
     }
     return cartView;
@@ -107,5 +108,5 @@ CartView.propTypes = {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CartView),
+  connect(mapStateToProps, mapDispatchToProps)(Section(CartView)),
 );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { displayCart } from '../../actions/navBar.actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Section from '../../hoc/Section';
 
 class UserAccount extends Component {
   componentDidMount() {
@@ -23,4 +24,4 @@ UserAccount.propTypes = {
   displayCart: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(UserAccount);
+export default connect(null, mapDispatchToProps)(Section(UserAccount));

@@ -4,6 +4,7 @@
     justify-content: flex-end;
     align-items: center;
     font-size: 2vmin;
+    align-self: center;
 }
 
 .CartBox {

@@ -5,6 +5,7 @@ import { FaQuoteLeft, FaQuoteRight } from 'react-icons/all';
 import { hideCart } from '../../actions/navBar.actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Section from '../../hoc/Section';
 
 const Home = (props) => {
   useEffect(() => {
@@ -13,10 +14,10 @@ const Home = (props) => {
 
   return (
     <div className={styles.Home}>
-      <span className={styles.Description}>
+      <p className={styles.Description}>
         <FaQuoteLeft /> Pick your favorite pokemon, add them to your cart and
         they will delivered to you, all free !!! <FaQuoteRight />
-      </span>
+      </p>
       <img className={styles.Pokeball} alt={'Pokeball'} src={pokeball} />
     </div>
   );
@@ -32,4 +33,4 @@ Home.propTypes = {
   hideCart: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Section(Home));

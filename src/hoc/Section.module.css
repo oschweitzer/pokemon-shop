@@ -1,0 +1,29 @@
+.Section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    width: 80%;
+    height: inherit;
+    max-height: 90vh;
+}
+
+.Section h2 {
+    align-self: flex-start;
+    font-weight: bold;
+}
+
+.Section button {
+    width: 15%;
+    border: none;
+    background-color: #56CBF9;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+}
+
+.Section button:hover {
+    box-shadow: 2px 2px 2px #AAA;
+    background-color: #00AF54;
+}

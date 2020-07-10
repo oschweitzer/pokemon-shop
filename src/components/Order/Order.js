@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { removeAllItems } from '../../actions/cart.actions';
 import styles from './Order.module.css';
 import { withRouter } from 'react-router-dom';
 import { FcPrint } from 'react-icons/all';
+import Section from '../../hoc/Section';
 
 const Order = (props) => {
   const onValidationHandler = () => {
@@ -11,10 +12,16 @@ const Order = (props) => {
     props.history.push('/');
   };
 
+  useEffect(() => {
+    if (props.pokemon.length === 0) {
+      props.history.push('/');
+    }
+  });
+
   let recap = null;
   if (props.pokemon.length > 0) {
     recap = (
-      <div className={styles.Recap}>
+      <React.Fragment>
         <h2>Recap</h2>
         <table className={styles.RecapTable}>
           <thead>
@@ -38,7 +45,7 @@ const Order = (props) => {
           </button>
           <button onClick={onValidationHandler}>OK</button>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
   return recap;
@@ -56,4 +63,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Order));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Section(Order)),
+);

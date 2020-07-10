@@ -1,6 +1,6 @@
 .NavBar {
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     align-content: center;
     width: 100%;
     max-height: 10vh;
@@ -11,6 +11,7 @@
     list-style-type: none;
     justify-content: center;
     align-content: center;
+    align-self: center;
 }
 
 .NavBar li {

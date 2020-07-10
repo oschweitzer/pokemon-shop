@@ -4,7 +4,7 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Loading from './components/Loading/Loading';
-import CartView from './components/Shop/Cart/CartView/CartView';
+import CartView from './components/CartView/CartView';
 import Order from './components/Order/Order';
 
 const Shop = React.lazy(() => import('./components/Shop/Shop'));

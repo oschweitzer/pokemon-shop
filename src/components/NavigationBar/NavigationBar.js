@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './NavigationBar.module.css';
 import { NavLink } from 'react-router-dom';
 import pokemonLogo from '../../assets/pokemon-logo.svg';
-import Cart from '../Shop/Cart/Cart';
+import Cart from '../Cart/Cart';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 

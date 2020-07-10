@@ -4,6 +4,7 @@ import styles from './Shop.module.css';
 import { displayCart } from '../../actions/navBar.actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Section from '../../hoc/Section';
 
 class Shop extends Component {
   state = {
@@ -23,7 +24,7 @@ class Shop extends Component {
 
   render() {
     return (
-      <div className={styles.Shop}>
+      <React.Fragment>
         <div className={styles.FiltersBar}>
           {/* Filter and search bar */}
           <label htmlFor={'itemsPerPage'}>Items per page</label>
@@ -39,7 +40,7 @@ class Shop extends Component {
         </div>
         <h2>Pokemon</h2>
         <PokemonList maxItemsPerPage={+this.state.maxItemsPerPage} />
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -54,4 +55,4 @@ Shop.propTypes = {
   displayCart: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(Shop);
+export default connect(null, mapDispatchToProps)(Section(Shop));
