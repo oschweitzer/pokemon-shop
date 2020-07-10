@@ -6,6 +6,7 @@ import Page from './Page/Page';
 class Pagination extends Component {
   state = {
     currentPage: 1,
+    pageWindow: 7,
   };
 
   componentDidMount() {
@@ -23,92 +24,91 @@ class Pagination extends Component {
     }
   };
 
-  render() {
-    const pagesList = [];
-    for (let page = 1; page <= this.props.pages; page++) {
-      pagesList.push(page);
+  getRange = (start, end) => {
+    return Array(end - start + 1)
+      .fill(0)
+      .map((v, i) => i + start);
+  };
+
+  pagination = (currentPage, pageCount, delta) => {
+    const range = {
+      start: currentPage - delta,
+      end: currentPage + delta,
+    };
+
+    if (range.start - 1 === 1 || range.end + 1 === pageCount) {
+      range.start += 1;
+      range.end += 1;
     }
-    const isFirstPage = this.state.currentPage === 1;
-    const isLastPage = this.state.currentPage === this.props.pages;
-    const previousPage = isFirstPage
-      ? null
-      : pagesList[this.state.currentPage - 2];
-    const nextPage = isLastPage ? null : pagesList[this.state.currentPage];
-    const isIndexAtTheBeginning = previousPage === 1 || isFirstPage;
-    const isIndexAtTheEnd = nextPage === this.props.pages || isLastPage;
+
+    let pages =
+      currentPage > delta
+        ? this.getRange(
+            Math.min(range.start, pageCount - delta),
+            Math.min(range.end, pageCount),
+          )
+        : this.getRange(1, Math.min(pageCount, delta + 1));
+
+    const withDots = (value, pair) =>
+      pages.length + 1 !== pageCount ? pair : [value];
+
+    if (pages[0] !== 1) {
+      pages = withDots(1, [1, '...']).concat(pages);
+    }
+
+    if (pages[pages.length - 1] < pageCount) {
+      pages = pages.concat(withDots(pageCount, ['...', pageCount]));
+    }
+
+    return pages;
+  };
+
+  render() {
+    const pages = [];
+    const pagination = this.pagination(
+      this.state.currentPage,
+      this.props.pages,
+      this.state.pageWindow % 2 === 0
+        ? this.state.pageWindow / 2 + 1
+        : Math.floor(this.state.pageWindow / 2),
+    );
+    pagination.map((page, index) => {
+      if (this.state.currentPage === page) {
+        pages.push(
+          <Page
+            key={index}
+            shouldDisplay={true}
+            isCurrentPage={true}
+            isClickable={false}
+          >
+            {page}
+          </Page>,
+        );
+      } else {
+        if (page === '...') {
+          pages.push(
+            <Page key={index} shouldDisplay={true} isClickable={false}>
+              {page}
+            </Page>,
+          );
+        } else {
+          pages.push(
+            <Page
+              key={index}
+              onPageClickHandler={() => this.onPageClickHandler(page)}
+              shouldDisplay={true}
+            >
+              {page}
+            </Page>,
+          );
+        }
+      }
+      return null;
+    });
 
     return (
       <div className={styles.Pagination}>
-        <ul>
-          <Page
-            onPageClickHandler={() =>
-              this.onPageClickHandler(this.state.currentPage - 1)
-            }
-            shouldDisplay={true}
-          >
-            {'<'}
-          </Page>
-
-          <Page
-            onPageClickHandler={() => this.onPageClickHandler(1)}
-            shouldDisplay={!isIndexAtTheBeginning}
-          >
-            1
-          </Page>
-
-          <Page
-            isClickable={false}
-            shouldDisplay={
-              !isFirstPage && !(isIndexAtTheBeginning || previousPage - 1 === 1)
-            }
-          >
-            ...
-          </Page>
-
-          <Page
-            onPageClickHandler={() => this.onPageClickHandler(previousPage)}
-            shouldDisplay={!isFirstPage}
-          >
-            {previousPage}
-          </Page>
-
-          <Page isClickable={false} isCurrentPage={true} shouldDisplay={true}>
-            {this.state.currentPage}
-          </Page>
-
-          <Page
-            onPageClickHandler={() => this.onPageClickHandler(nextPage)}
-            shouldDisplay={!isLastPage}
-          >
-            {nextPage}
-          </Page>
-
-          <Page
-            isClickable={false}
-            shouldDisplay={
-              !isLastPage &&
-              !(isIndexAtTheEnd || nextPage + 1 === this.props.pages)
-            }
-          >
-            ...
-          </Page>
-
-          <Page
-            onPageClickHandler={() => this.onPageClickHandler(pagesList.length)}
-            shouldDisplay={!isIndexAtTheEnd}
-          >
-            {pagesList.length}
-          </Page>
-
-          <Page
-            onPageClickHandler={() =>
-              this.onPageClickHandler(this.state.currentPage + 1)
-            }
-            shouldDisplay={true}
-          >
-            {'>'}
-          </Page>
-        </ul>
+        <ul>{pages}</ul>
       </div>
     );
   }

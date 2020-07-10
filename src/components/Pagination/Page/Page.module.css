@@ -12,6 +12,7 @@
 .UnClickable {
     text-decoration: none !important;
     cursor: default !important;
+    font-weight: normal !important;
 }
 
 .CurrentPage {

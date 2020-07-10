@@ -8,11 +8,24 @@ class Page extends Component {
     isCurrentPage: false,
   };
 
-  componentDidMount() {
+  updateState = (isClickable, isCurrentPage) => {
     this.setState({
-      isClickable: this.props.isClickable ?? true,
-      isCurrentPage: this.props.isCurrentPage || false,
+      isClickable: isClickable ?? true,
+      isCurrentPage: isCurrentPage || false,
     });
+  };
+
+  componentDidMount() {
+    this.updateState(this.props.isClickable, this.props.isCurrentPage);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.isClickable !== this.props.isClickable ||
+      prevProps.isCurrentPage !== this.props.isCurrentPage
+    ) {
+      this.updateState(this.props.isClickable, this.props.isCurrentPage);
+    }
   }
 
   render() {

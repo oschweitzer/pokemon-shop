@@ -13,33 +13,53 @@ class PokemonList extends Component {
     currentPage: 1,
   };
 
-  getPokemon = async (offset, currentPage) => {
-    const response = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${this.props.maxItemsPerPage}`,
-    );
-    this.setState({
-      pokemon: response.data.results,
-      offset,
-      currentPage,
-      totalPages: Math.ceil(response.data.count / this.props.maxItemsPerPage),
-    });
+  source = null;
+  _isMounted = false;
+
+  getPokemon = async (currentPage) => {
+    const CancelToken = axios.CancelToken;
+    this.source = CancelToken.source();
+    const offset = (currentPage - 1) * this.props.maxItemsPerPage;
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${this.props.maxItemsPerPage}`,
+        {
+          canceltoken: this.source.token,
+        },
+      );
+      if (this._isMounted) {
+        this.setState({
+          pokemon: response.data.results,
+          offset,
+          currentPage,
+          totalPages: Math.ceil(
+            response.data.count / this.props.maxItemsPerPage,
+          ),
+        });
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   async componentDidMount() {
-    await this.getPokemon(this.state.offset, 1);
+    this._isMounted = true;
+    await this.getPokemon(this.state.currentPage);
   }
 
   async componentDidUpdate(prevProps) {
     if (prevProps.maxItemsPerPage !== this.props.maxItemsPerPage) {
-      await this.getPokemon(this.state.offset, 1);
+      await this.getPokemon(this.state.currentPage);
     }
   }
 
+  componentWillUnmount() {
+    this.source.cancel('Component unmounted');
+    this._isMounted = false;
+  }
+
   onChangePageHandler = async (currentPage) => {
-    await this.getPokemon(
-      (currentPage - 1) * this.props.maxItemsPerPage,
-      currentPage,
-    );
+    await this.getPokemon(currentPage);
   };
 
   render() {

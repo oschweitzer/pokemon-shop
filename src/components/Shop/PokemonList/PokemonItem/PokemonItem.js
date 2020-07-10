@@ -13,15 +13,32 @@ class PokemonItem extends Component {
     addAnimation: false,
   };
 
+  source = null;
+  _isMounted = false;
+
   async componentDidMount() {
-    const response = await axios.get(this.props.pokemonUrl);
-    this.setState({
-      pokedexNumber: response.data.id,
-      name: `${response.data.name[0].toUpperCase()}${response.data.name.substring(
-        1,
-      )}`,
-      imageUrl: response.data.sprites.front_default,
-    });
+    const CancelToken = axios.CancelToken;
+    this.source = CancelToken.source();
+    this._isMounted = true;
+    try {
+      const { data } = await axios.get(this.props.pokemonUrl, {
+        canceltoken: this.source.token,
+      });
+      if (this._isMounted) {
+        this.setState({
+          pokedexNumber: data.id,
+          name: `${data.name[0].toUpperCase()}${data.name.substring(1)}`,
+          imageUrl: data.sprites.front_default,
+        });
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  componentWillUnmount() {
+    this.source.cancel('Component unmounted');
+    this._isMounted = false;
   }
 
   pokemonSelectionHandler = () => {
