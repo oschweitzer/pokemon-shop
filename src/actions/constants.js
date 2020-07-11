@@ -4,3 +4,7 @@ export const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
 export const DISPLAY_CART = 'DISPLAY_CART';
 export const HIDE_CART = 'HIDE_CART';
 export const REMOVE_ALL_ITEMS = 'REMOVE_ALL_ITEMS';
+export const ACTIVATE_MODAL = 'ACTIVATE_MODAL';
+export const DEACTIVATE_MODAL = 'DEACTIVATE_MODAL';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';

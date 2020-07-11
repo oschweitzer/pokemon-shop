@@ -5,7 +5,7 @@ import { FaQuoteLeft, FaQuoteRight } from 'react-icons/all';
 import { hideCart } from '../../actions/navBar.actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Section from '../../hoc/Section';
+import Section from '../../hoc/Section/Section';
 
 const Home = (props) => {
   useEffect(() => {

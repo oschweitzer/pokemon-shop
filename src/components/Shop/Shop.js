@@ -4,7 +4,7 @@ import styles from './Shop.module.css';
 import { displayCart } from '../../actions/navBar.actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Section from '../../hoc/Section';
+import Section from '../../hoc/Section/Section';
 
 class Shop extends Component {
   state = {

@@ -1,18 +1,22 @@
 .App {
-  text-align: center;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: inherit;
 }
 
+.Modal {
+    background-color: rgba(40, 44, 52, 0.3) !important;
+}
+
 .App-header {
-  background-color: #282c34;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .MainSection {

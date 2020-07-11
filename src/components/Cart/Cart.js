@@ -17,8 +17,7 @@ class Cart extends Component {
           <span className="w3-badge w3-red margin-left">
             {this.props.numberOfArticles}
           </span>
-          <TiShoppingCart />
-          <span>Cart</span>
+          <TiShoppingCart className={styles.CartIcon} />
         </div>
       </div>
     );

@@ -1,0 +1,13 @@
+.Modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 80%;
+    box-shadow: 10px 10px 10px #282c34;
+    padding: 1%;
+    border-radius: 10px;
+    border: 1px solid #DDDDDD;
+    background-color: antiquewhite !important;
+}
+

@@ -4,7 +4,7 @@ import { removeAllItems } from '../../actions/cart.actions';
 import styles from './Order.module.css';
 import { withRouter } from 'react-router-dom';
 import { FcPrint } from 'react-icons/all';
-import Section from '../../hoc/Section';
+import Section from '../../hoc/Section/Section';
 
 const Order = (props) => {
   const onValidationHandler = () => {

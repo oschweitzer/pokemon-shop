@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { displayCart } from '../../actions/navBar.actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Section from '../../hoc/Section';
+import Section from '../../hoc/Section/Section';
 
 class UserAccount extends Component {
   componentDidMount() {

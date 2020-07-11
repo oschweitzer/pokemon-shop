@@ -11,7 +11,7 @@ import {
 } from '../../actions/cart.actions';
 import { FaTrashAlt } from 'react-icons/all';
 import { withRouter } from 'react-router-dom';
-import Section from '../../hoc/Section';
+import Section from '../../hoc/Section/Section';
 
 class CartView extends Component {
   componentDidMount() {
@@ -42,10 +42,10 @@ class CartView extends Component {
                 <div key={pokemon.id} className={styles.Item}>
                   <PokemonItem pokemonUrl={pokemon.url} disabled={true} />
                   <div className={styles.ItemQuantity}>
-                    <label htmlFor={'quantity'}>Quantity: </label>
+                    <label htmlFor={`quantity_${pokemon.id}`}>Quantity: </label>
                     <input
                       className={styles.QuantityInput}
-                      name={'quantity'}
+                      id={`quantity_${pokemon.id}`}
                       type={'number'}
                       min={1}
                       value={pokemon.quantity}

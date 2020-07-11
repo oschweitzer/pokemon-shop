@@ -1,0 +1,76 @@
+.Auth {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.Auth h3 {
+    font-weight: bold;
+}
+
+.FormItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+    margin: 1% 0 1% 0;
+}
+
+.FormItem label {
+    width: 100%;
+    margin-right: 2%;
+}
+
+.FormItem input {
+    border: none;
+    border-radius: 5px;
+}
+
+.FormItem input:hover {
+    box-shadow: 2px 2px 2px #AAAAAA;
+}
+
+.Actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.CloseButton {
+    width: 30%;
+    border: none;
+    background-color: #bd3736;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    padding: 5px;
+}
+
+.CloseButton:hover {
+    box-shadow: 2px 2px 2px #AAA;
+    background-color: #FE5F55;
+}
+
+.ValidationButton {
+    width: 30%;
+    border: none;
+    background-color: #56CBF9;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    padding: 5px;
+}
+
+.ValidationButton:hover {
+    box-shadow: 2px 2px 2px #AAA;
+    background-color: #00AF54;
+}
+
+.SignUpText {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-style: italic;
+}
