@@ -32,6 +32,10 @@
     padding: 10px;
 }
 
+.Logo:hover {
+    cursor: pointer;
+}
+
 .NavBarItemActive {
     background-color: #bd3736;
     border-radius: 5px;

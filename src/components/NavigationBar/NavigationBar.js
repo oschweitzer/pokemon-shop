@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './NavigationBar.module.css';
-import { NavLink, withRouter } from 'react-router-dom';
+import {Link, NavLink, withRouter} from 'react-router-dom';
 import pokemonLogo from '../../assets/pokemon-logo.svg';
 import Cart from '../Cart/Cart';
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ class NavigationBar extends Component {
   render() {
     return (
       <nav className={styles.NavBar}>
-        <img className={styles.Logo} alt={'Pokemon logo'} src={pokemonLogo} />
+        <img className={styles.Logo} alt={'Pokemon logo'} src={pokemonLogo} onClick={() => this.props.history.push('/')} />
         <ul>
           <li>
             <NavLink exact to={'/'} activeClassName={styles.NavBarItemActive}>
