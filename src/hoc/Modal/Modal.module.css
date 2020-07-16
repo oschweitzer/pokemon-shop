@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    width: 80%;
+    max-width: 70%;
     box-shadow: 10px 10px 10px #282c34;
     padding: 1%;
     border-radius: 10px;

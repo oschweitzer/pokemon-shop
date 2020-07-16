@@ -6,29 +6,29 @@ import { Link, withRouter } from 'react-router-dom';
 import { login } from '../../actions/auth.actions';
 import { connect } from 'react-redux';
 import { activateModal, deactivateModal } from '../../actions/modal.actions';
+import { validateEmail, validatePassword } from '../../utils/Utils';
+import FormItem from '../FormItem/FormItem';
 
 class Auth extends Component {
   state = {
     email: '',
     password: '',
-    isSignUp: false,
+    isEmailValid: false,
+    isPasswordValid: false,
   };
 
   componentDidMount() {
-    this.props.activateModal();
-    if (this.props.isSignUp) {
-      this.setState({
-        isSignUp: true,
-      });
-    }
+    this.toggleModal();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.isSignUp !== this.props.isSignUp) {
+    if (
+      prevProps.isLoggedIn !== this.props.isLoggedIn ||
+      prevProps.displayResetPasswordModal !==
+        this.props.displayResetPasswordModal ||
+      prevProps.isModalActivated !== this.props.isModalActivated
+    ) {
       this.props.activateModal();
-      this.setState({
-        isSignUp: this.props.isSignUp,
-      });
     }
   }
 
@@ -36,118 +36,136 @@ class Auth extends Component {
     this.props.deactivateModal();
   }
 
+  toggleModal = () => {
+    if (this.props.isModalActivated) {
+      this.props.deactivateModal();
+    } else {
+      this.props.activateModal();
+    }
+  };
+
   onClose = () => {
     this.setState({
       email: '',
       password: '',
     });
-    this.props.deactivateModal();
+    this.toggleModal();
     this.props.history.goBack();
   };
 
   onEmailInput = (value) => {
-    if (!this.validateEmail(value)) {
-      console.error('Wrong email');
-    }
     this.setState({
       email: value,
+      isEmailValid: validateEmail(value),
     });
   };
 
   onPasswordInput = (value) => {
-    if (!this.validatePassword(value)) {
-      console.error('Wrong password');
-    }
     this.setState({
       password: value,
+      isPasswordValid: validatePassword(value),
     });
-  };
-
-  validateEmail = (email) => {
-    return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
-  };
-
-  validatePassword = (password) => {
-    /*
-    To check a password between 8 to 15 characters
-     which contain at least one lowercase letter,
-     one uppercase letter,
-     one numeric digit,
-     and one special character
-     */
-    return password.match(
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/,
-    );
   };
 
   validationHandler = async (event) => {
     event.preventDefault();
     if (
-      this.validateEmail(this.state.email) &&
-      this.validatePassword(this.state.password)
+      this.props.displayResetPasswordModal &&
+      validateEmail(this.state.email)
     ) {
-      if (this.state.isSignUp) {
-        try {
-          await this.props.firebase.doCreateUserWithEmailAndPassword(
-            this.state.email,
-            this.state.password,
-          );
-        } catch (err) {
-          console.error(err);
-        }
-      } else {
-        try {
-          const {
-            user,
-          } = await this.props.firebase.doSignInWithEmailAndPassword(
-            this.state.email,
-            this.state.password,
-          );
-          this.props.login(user);
-        } catch (err) {
-          console.error(err);
-        }
-      }
-      this.props.deactivateModal();
-      this.props.history.goBack();
+      await this.resetPasswordHandler();
     } else {
-      console.error('Wrong credentials');
+      if (
+        validateEmail(this.state.email) &&
+        validatePassword(this.state.password)
+      ) {
+        await this.authenticationHandler();
+      }
     }
   };
 
+  resetPasswordHandler = async () => {
+    try {
+      await this.props.firebase.doPasswordReset(this.state.email);
+      this.props.deactivateModal();
+      this.props.history.goBack();
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  };
+
+  authenticationHandler = async () => {
+    if (this.props.isLoggedIn) {
+      try {
+        await this.props.firebase.doCreateUserWithEmailAndPassword(
+          this.state.email,
+          this.state.password,
+        );
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      try {
+        const authUser = await this.props.firebase.doSignInWithEmailAndPassword(
+          this.state.email,
+          this.state.password,
+        );
+        this.props.login(authUser.user.email);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    this.toggleModal();
+    this.props.history.goBack();
+  };
+
   render() {
-    let signUpText = null;
-    if (!this.state.isSignUp) {
-      signUpText = (
+    const email = (
+      <FormItem
+        label={'Email'}
+        itemType={'email'}
+        onInputHandler={this.onEmailInput}
+        value={this.state.email}
+        isValueValid={this.state.isEmailValid}
+      />
+    );
+    const signUpText = this.props.isSignUp ? null : (
+      <React.Fragment>
         <span className={styles.SignUpText}>
-          You don't have an account ? &nbsp;
+          You do not have an account ? &nbsp;
           <Link exact={'true'} to={'/signup'}>
             Sign up
           </Link>
         </span>
-      );
-    }
+        <span className={styles.SignUpText}>
+          <Link exact={'true'} to={'/resetPassword'}>
+            Forgot password ?
+          </Link>
+        </span>
+      </React.Fragment>
+    );
+
+    const modal = this.props.displayResetPasswordModal ? (
+      email
+    ) : (
+      <React.Fragment>
+        {email}
+        <FormItem
+          label={'Password'}
+          itemType={'password'}
+          onInputHandler={this.onPasswordInput}
+          value={this.state.password}
+          isValueValid={this.state.isPasswordValid}
+        />
+        {signUpText}
+      </React.Fragment>
+    );
 
     return (
       <form className={styles.Auth} onSubmit={this.validationHandler}>
         <h3>{this.props.title}</h3>
-        <div className={styles.FormItem}>
-          <label htmlFor={'email'}>Email</label>
-          <input
-            id={'email'}
-            type={'email'}
-            onInput={(event) => this.onEmailInput(event.target.value)}
-          />
-        </div>
-        <div className={styles.FormItem}>
-          <label htmlFor={'password'}>Password</label>
-          <input
-            id={'password'}
-            type={'password'}
-            onInput={(event) => this.onPasswordInput(event.target.value)}
-          />
-        </div>
-        {signUpText}
+        {modal}
         <div className={styles.Actions}>
           <button onClick={this.onClose} className={styles.CloseButton}>
             Close
@@ -172,6 +190,16 @@ Auth.propTypes = {
   title: PropTypes.string,
   isSignUp: PropTypes.bool,
   firebase: PropTypes.object,
+  isLoggedIn: PropTypes.bool,
+  displayResetPasswordModal: PropTypes.bool,
+  isModalActivated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.authReducer.isLoggedIn,
+    isModalActivated: state.modalReducer.isModalActivated,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -182,4 +210,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(Modal(Auth)));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Modal(Auth)),
+);

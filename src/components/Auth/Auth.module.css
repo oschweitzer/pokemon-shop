@@ -10,33 +10,12 @@
     font-weight: bold;
 }
 
-.FormItem {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-content: center;
-    margin: 1% 0 1% 0;
-}
-
-.FormItem label {
-    width: 100%;
-    margin-right: 2%;
-}
-
-.FormItem input {
-    border: none;
-    border-radius: 5px;
-}
-
-.FormItem input:hover {
-    box-shadow: 2px 2px 2px #AAAAAA;
-}
-
 .Actions {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-content: center;
+    margin-top: 2%;
 }
 
 .CloseButton {

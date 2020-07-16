@@ -1,7 +1,6 @@
 import { LOGIN, LOGOUT } from '../actions/constants';
 
 const initialState = {
-  isModalActivated: false,
   isLoggedIn: false,
   email: '',
 };
@@ -10,14 +9,13 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN: {
       return {
-        ...state,
         isLoggedIn: true,
-        email: action.email,
+        email: action.user.email,
       };
     }
     case LOGOUT: {
       return {
-        ...state,
+        isLoggedIn: false,
         email: '',
       };
     }

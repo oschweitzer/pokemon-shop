@@ -1,9 +1,11 @@
 import { LOGIN, LOGOUT } from './constants';
 
-export const login = (user) => {
+export const login = (email) => {
   return {
     type: LOGIN,
-    email: user.email,
+    user: {
+      email,
+    },
   };
 };
 

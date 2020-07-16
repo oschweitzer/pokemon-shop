@@ -11,12 +11,6 @@ const Modal = (WrappedComponent) => {
       show: true,
     };
 
-    onClose = () => {
-      this.setState({
-        show: false,
-      });
-    };
-
     render() {
       if (!this.state.show) {
         return null;
