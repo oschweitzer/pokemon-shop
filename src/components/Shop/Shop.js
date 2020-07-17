@@ -26,7 +26,7 @@ class Shop extends Component {
     return (
       <React.Fragment>
         <div className={styles.FiltersBar}>
-          {/* Filter and search bar */}
+          {/* TODO: add filters and search bar */}
           <label htmlFor={'itemsPerPage'}>Items per page</label>
           <select
             name={'itemsPerPage'}

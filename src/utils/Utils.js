@@ -10,7 +10,7 @@ export const validatePassword = (password) => {
    one numeric digit,
    and one special character
    */
-  return password.match(
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/,
+  return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(
+    password,
   );
 };

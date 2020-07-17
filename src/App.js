@@ -41,7 +41,9 @@ class App extends Component {
             </Route>
             <Route exact path={'/account'}>
               <Suspense fallback={<Loading />}>
-                <UserAccount />
+                <FirebaseContext.Consumer>
+                  {(firebase) => <UserAccount firebase={firebase} />}
+                </FirebaseContext.Consumer>
               </Suspense>
             </Route>
             <Route exact path={'/cart'}>

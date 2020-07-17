@@ -5,6 +5,7 @@ import styles from './Order.module.css';
 import { withRouter } from 'react-router-dom';
 import { FcPrint } from 'react-icons/all';
 import Section from '../../hoc/Section/Section';
+import ValidationFormSubmitButton from '../Buttons/ValidationButton/ValidationFormSubmitButton';
 
 const Order = (props) => {
   const onValidationHandler = () => {
@@ -39,12 +40,12 @@ const Order = (props) => {
             ))}
           </tbody>
         </table>
-        <div className={styles.Actions}>
+        <form onSubmit={onValidationHandler} className={styles.Actions}>
           <button className={styles.PrintButton} onClick={window.print}>
             <FcPrint />
           </button>
-          <button onClick={onValidationHandler}>OK</button>
-        </div>
+          <ValidationFormSubmitButton value={'OK'} />
+        </form>
       </React.Fragment>
     );
   }

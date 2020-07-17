@@ -12,6 +12,7 @@ import {
 import { FaTrashAlt } from 'react-icons/all';
 import { withRouter } from 'react-router-dom';
 import Section from '../../hoc/Section/Section';
+import ValidationFormSubmitButton from '../Buttons/ValidationButton/ValidationFormSubmitButton';
 
 class CartView extends Component {
   componentDidMount() {
@@ -67,14 +68,8 @@ class CartView extends Component {
               );
             })}
           </div>
-          <form>
-            <button
-              className={styles.SubmitButton}
-              type={'submit'}
-              onClick={this.onSubmitHandler}
-            >
-              Order
-            </button>
+          <form onSubmit={this.onSubmitHandler}>
+            <ValidationFormSubmitButton value={'Order'} />
           </form>
         </React.Fragment>
       );

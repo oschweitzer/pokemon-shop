@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import { activateModal, deactivateModal } from '../../actions/modal.actions';
 import { validateEmail, validatePassword } from '../../utils/Utils';
 import FormItem from '../FormItem/FormItem';
+import ValidationFormSubmitButton from '../Buttons/ValidationButton/ValidationFormSubmitButton';
+import CancelButton from '../Buttons/CancelButton/CancelButton';
 
 class Auth extends Component {
   state = {
@@ -103,7 +105,7 @@ class Auth extends Component {
           this.state.password,
         );
       } catch (err) {
-        console.error(err);
+        alert(err.message);
       }
     } else {
       try {
@@ -113,7 +115,7 @@ class Auth extends Component {
         );
         this.props.login(authUser.user.email);
       } catch (err) {
-        console.error(err);
+        alert(err.message);
       }
     }
     this.toggleModal();
@@ -167,14 +169,8 @@ class Auth extends Component {
         <h3>{this.props.title}</h3>
         {modal}
         <div className={styles.Actions}>
-          <button onClick={this.onClose} className={styles.CloseButton}>
-            Close
-          </button>
-          <input
-            type={'submit'}
-            className={styles.ValidationButton}
-            value={this.props.validationButtonText}
-          />
+          <CancelButton onClick={this.onClose}>Close</CancelButton>
+          <ValidationFormSubmitButton value={this.props.validationButtonText} />
         </div>
       </form>
     );
