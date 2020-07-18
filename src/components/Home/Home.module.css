@@ -3,6 +3,7 @@
   flex-direction: row;
   align-content: center;
   justify-content: space-evenly;
+  max-height: 60%;
 }
 
 .Description {
@@ -14,9 +15,13 @@
   align-self: center;
 }
 
-.Pokeball {
+.Image {
   align-self: center;
   height: 20%;
+}
+
+.Pokeball {
+  height: 40%;
   -webkit-animation: spin 4s linear infinite;
   -moz-animation: spin 4s linear infinite;
   animation: spin 4s linear infinite;

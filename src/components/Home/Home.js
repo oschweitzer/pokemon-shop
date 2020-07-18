@@ -13,13 +13,24 @@ const Home = (props) => {
   });
 
   return (
-    <div className={styles.Home}>
-      <p className={styles.Description}>
-        <FaQuoteLeft /> Pick your favorite pokemon, add them to your cart and
-        they will delivered to you, all free !!! <FaQuoteRight />
-      </p>
-      <img className={styles.Pokeball} alt={'Pokeball'} src={pokeball} />
-    </div>
+    <React.Fragment>
+      <div className={styles.Home}>
+        <img
+          className={[styles.Pokeball, styles.Image].join(' ')}
+          alt={'Pokeball'}
+          src={pokeball}
+        />
+        <p className={styles.Description}>
+          <FaQuoteLeft /> Pick your favorite pokemon, add them to your cart and
+          they will delivered to you, all free !!! <FaQuoteRight />
+        </p>
+      </div>
+      <img
+        src={'https://i.imgur.com/E9EHO5l.gif'}
+        alt={'Pikachu'}
+        className={styles.Image}
+      />
+    </React.Fragment>
   );
 };
 
