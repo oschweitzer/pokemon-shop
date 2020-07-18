@@ -17,8 +17,9 @@ class NavigationBar extends Component {
     try {
       await this.props.firebase.doSignOut();
       this.props.logout();
+      this.props.history.push('/');
     } catch (err) {
-      console.error(err);
+      alert(err);
     }
   };
 
