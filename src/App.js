@@ -8,12 +8,17 @@ import CartView from './components/CartView/CartView';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FirebaseContext from './components/Firebase/context';
+
 const Shop = React.lazy(() => import('./components/Shop/Shop'));
 const UserAccount = React.lazy(() =>
   import('./components/UserAccount/UserAccount'),
 );
-const Auth = React.lazy(() => import('./components/Auth/Auth'));
 const Order = React.lazy(() => import('./components/Order/Order'));
+const Login = React.lazy(() => import('./components/Auth/Login/Login'));
+const ResetPassword = React.lazy(() =>
+  import('./components/Auth/ResetPassword/ResetPassword'),
+);
+const SignUp = React.lazy(() => import('./components/Auth/SignUp/SignUp'));
 
 class App extends Component {
   render() {
@@ -59,41 +64,21 @@ class App extends Component {
             <Route exact path={'/signin'}>
               <Suspense fallback={<Loading />}>
                 <FirebaseContext.Consumer>
-                  {(firebase) => (
-                    <Auth
-                      title={'Login'}
-                      validationButtonText={'Login'}
-                      firebase={firebase}
-                    />
-                  )}
+                  {(firebase) => <Login firebase={firebase} />}
                 </FirebaseContext.Consumer>
               </Suspense>
             </Route>
             <Route exact path={'/signup'}>
               <Suspense fallback={<Loading />}>
                 <FirebaseContext.Consumer>
-                  {(firebase) => (
-                    <Auth
-                      isSignUp={true}
-                      title={'Sign up'}
-                      validationButtonText={'Sign up'}
-                      firebase={firebase}
-                    />
-                  )}
+                  {(firebase) => <SignUp firebase={firebase} />}
                 </FirebaseContext.Consumer>
               </Suspense>
             </Route>
             <Route exact path={'/resetPassword'}>
               <Suspense fallback={<Loading />}>
                 <FirebaseContext.Consumer>
-                  {(firebase) => (
-                    <Auth
-                      displayResetPasswordModal={true}
-                      title={'Reset password'}
-                      validationButtonText={'Send'}
-                      firebase={firebase}
-                    />
-                  )}
+                  {(firebase) => <ResetPassword firebase={firebase} />}
                 </FirebaseContext.Consumer>
               </Suspense>
             </Route>

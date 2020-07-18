@@ -14,6 +14,12 @@ const ValidationFormSubmitButton = styled.input.attrs({ type: 'submit' })`
     box-shadow: 2px 2px 2px #aaa;
     background-color: #00af54;
   }
+
+  &:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    box-shadow: unset;
+  }
 `;
 
 export default ValidationFormSubmitButton;

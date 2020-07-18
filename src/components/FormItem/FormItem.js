@@ -14,7 +14,7 @@ const FormItem = (props) => {
           onInput={(event) => props.onInputHandler(event.target.value)}
         />
       </div>
-      {props.value ? (
+      {props.value && props.validation ? (
         <FormItemValidation
           value={props.isValueValid}
           itemType={props.itemType}
@@ -32,6 +32,7 @@ FormItem.propTypes = {
   value: PropTypes.string,
   isValueValid: PropTypes.bool,
   onInputHandler: PropTypes.func,
+  validation: PropTypes.bool,
 };
 
 export default FormItem;

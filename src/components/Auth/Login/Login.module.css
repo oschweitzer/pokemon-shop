@@ -1,4 +1,4 @@
-.Auth {
+.LoginForm {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -6,16 +6,8 @@
     align-content: center;
 }
 
-.Auth h3 {
+.LoginForm h3 {
     font-weight: bold;
-}
-
-.Actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-content: center;
-    margin-top: 2%;
 }
 
 .SignUpText {

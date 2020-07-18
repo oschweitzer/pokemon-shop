@@ -19,7 +19,11 @@ class UserAccount extends Component {
   };
 
   componentDidMount() {
-    this.props.displayCart();
+    if (this.props.isLoggedIn) {
+      this.props.displayCart();
+    } else {
+      this.props.history.push('/signin');
+    }
   }
 
   onUpdatePasswordClickHandler = () => {

@@ -33,4 +33,4 @@ Home.propTypes = {
   hideCart: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(Section(Home));
+export default Section(connect(null, mapDispatchToProps)(Home));
