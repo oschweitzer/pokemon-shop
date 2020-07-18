@@ -1,14 +1,14 @@
 .Section {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: flex-start;
-    width: 80%;
-    height: inherit;
-    max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  width: 80%;
+  height: inherit;
+  max-height: 90vh;
 }
 
 .Section h2 {
-    align-self: flex-start;
-    font-weight: bold;
+  align-self: flex-start;
+  font-weight: bold;
 }

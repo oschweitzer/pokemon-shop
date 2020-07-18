@@ -1,27 +1,42 @@
 .Home {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
 }
 
 .Description {
-    font-family: Roboto, serif;
-    font-weight: bold;
-    font-size: xx-large;
-    max-width: 50%;
-    text-align: center;
-    align-self: center;
+  font-family: Roboto, serif;
+  font-weight: bold;
+  font-size: xx-large;
+  max-width: 50%;
+  text-align: center;
+  align-self: center;
 }
 
 .Pokeball {
-    align-self: center;
-    height: 20%;
-    -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
+  align-self: center;
+  height: 20%;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
 }
 
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
