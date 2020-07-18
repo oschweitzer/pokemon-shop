@@ -5,19 +5,20 @@ import pokemonLogo from '../../assets/pokemon-logo.svg';
 import Cart from '../Cart/Cart';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AuthBadge from '../AuthBadge/AuthBadge';
+import AuthBadge from '../Auth/AuthBadge/AuthBadge';
 import { logout } from '../../actions/auth.actions';
+import { ACCOUNT, HOME, SHOP, SIGN_IN } from '../../constants/routes';
 
 class NavigationBar extends Component {
   onSignUpClickHandler = () => {
-    this.props.history.push('/signin');
+    this.props.history.push(SIGN_IN);
   };
 
   onLogoutClickHandler = async () => {
     try {
       await this.props.firebase.doSignOut();
       this.props.logout();
-      this.props.history.push('/');
+      this.props.history.push(HOME);
     } catch (err) {
       alert(err);
     }
@@ -30,20 +31,16 @@ class NavigationBar extends Component {
           className={styles.Logo}
           alt={'Pokemon logo'}
           src={pokemonLogo}
-          onClick={() => this.props.history.push('/')}
+          onClick={() => this.props.history.push(HOME)}
         />
         <ul>
           <li>
-            <NavLink exact to={'/'} activeClassName={styles.NavBarItemActive}>
+            <NavLink exact to={HOME} activeClassName={styles.NavBarItemActive}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink
-              exact
-              to={'/shop'}
-              activeClassName={styles.NavBarItemActive}
-            >
+            <NavLink exact to={SHOP} activeClassName={styles.NavBarItemActive}>
               Shop
             </NavLink>
           </li>
@@ -51,7 +48,7 @@ class NavigationBar extends Component {
             <li>
               <NavLink
                 exact
-                to={'/account'}
+                to={ACCOUNT}
                 activeClassName={styles.NavBarItemActive}
               >
                 My account

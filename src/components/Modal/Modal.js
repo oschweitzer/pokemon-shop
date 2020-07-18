@@ -5,6 +5,7 @@ import { activateModal, deactivateModal } from '../../actions/modal.actions';
 import { login } from '../../actions/auth.actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { HOME } from '../../constants/routes';
 
 class Modal extends Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class Modal extends Component {
     if (this.props.history.length > 2) {
       this.props.history.goBack();
     } else {
-      this.props.history.push('/');
+      this.props.history.push(HOME);
     }
   };
 

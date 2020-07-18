@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormItem from '../../FormItem/FormItem';
+import FormItem from '../../Form/FormItem/FormItem';
 import CancelButton from '../../Buttons/CancelButton/CancelButton';
 import ValidationFormSubmitButton from '../../Buttons/ValidationButton/ValidationFormSubmitButton';
 import { activateModal, deactivateModal } from '../../../actions/modal.actions';

@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import PokemonItem from '../Shop/PokemonList/PokemonItem/PokemonItem';
+import PokemonItem from '../../Shop/PokemonList/PokemonItem/PokemonItem';
 import styles from './CartView.module.css';
-import { displayCart } from '../../actions/navBar.actions';
+import { displayCart } from '../../../actions/navBar.actions';
 import {
   removeAllItems,
   removeItem,
   updateQuantity,
-} from '../../actions/cart.actions';
+} from '../../../actions/cart.actions';
 import { FaTrashAlt } from 'react-icons/all';
 import { withRouter } from 'react-router-dom';
-import Section from '../../hoc/Section/Section';
-import ValidationFormSubmitButton from '../Buttons/ValidationButton/ValidationFormSubmitButton';
+import Section from '../../../hoc/Section/Section';
+import ValidationFormSubmitButton from '../../Buttons/ValidationButton/ValidationFormSubmitButton';
+import { ORDER_RECAP } from '../../../constants/routes';
 
 class CartView extends Component {
   componentDidMount() {
@@ -28,7 +29,7 @@ class CartView extends Component {
   };
 
   onSubmitHandler = () => {
-    this.props.history.push('/order/recap');
+    this.props.history.push(ORDER_RECAP);
   };
 
   render() {

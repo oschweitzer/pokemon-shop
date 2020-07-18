@@ -6,16 +6,17 @@ import { withRouter } from 'react-router-dom';
 import { FcPrint } from 'react-icons/all';
 import Section from '../../hoc/Section/Section';
 import ValidationFormSubmitButton from '../Buttons/ValidationButton/ValidationFormSubmitButton';
+import { HOME } from '../../constants/routes';
 
 const Order = (props) => {
   const onValidationHandler = () => {
     props.removeAllItems();
-    props.history.push('/');
+    props.history.push(HOME);
   };
 
   useEffect(() => {
     if (props.pokemon.length === 0) {
-      props.history.push('/');
+      props.history.push(HOME);
     }
   });
 

@@ -4,10 +4,11 @@ import styles from './Cart.module.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { CART } from '../../constants/routes';
 
 class Cart extends Component {
   onCartClickHandler = () => {
-    this.props.history.push('/cart');
+    this.props.history.push(CART);
   };
 
   render() {

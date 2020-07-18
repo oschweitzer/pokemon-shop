@@ -4,10 +4,20 @@ import styles from './App.module.css';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './components/Home/Home';
 import Loading from './components/Loading/Loading';
-import CartView from './components/CartView/CartView';
+import CartView from './components/Cart/CartView/CartView';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FirebaseContext from './components/Firebase/context';
+import {
+  ACCOUNT,
+  CART,
+  HOME,
+  ORDER_RECAP,
+  RESET_PASSWORD,
+  SHOP,
+  SIGN_IN,
+  SIGN_UP,
+} from './constants/routes';
 
 const Shop = React.lazy(() => import('./components/Shop/Shop'));
 const UserAccount = React.lazy(() =>
@@ -36,46 +46,46 @@ class App extends Component {
         </header>
         <section className={classes}>
           <Switch>
-            <Route exact path={'/'}>
+            <Route exact path={HOME}>
               <Home />
             </Route>
-            <Route exact path={'/shop'}>
+            <Route exact path={SHOP}>
               <Suspense fallback={<Loading />}>
                 <Shop />
               </Suspense>
             </Route>
-            <Route exact path={'/account'}>
+            <Route exact path={ACCOUNT}>
               <Suspense fallback={<Loading />}>
                 <FirebaseContext.Consumer>
                   {(firebase) => <UserAccount firebase={firebase} />}
                 </FirebaseContext.Consumer>
               </Suspense>
             </Route>
-            <Route exact path={'/cart'}>
+            <Route exact path={CART}>
               <Suspense fallback={<Loading />}>
                 <CartView />
               </Suspense>
             </Route>
-            <Route exact path={'/order/recap'}>
+            <Route exact path={ORDER_RECAP}>
               <Suspense fallback={<Loading />}>
                 <Order />
               </Suspense>
             </Route>
-            <Route exact path={'/signin'}>
+            <Route exact path={SIGN_IN}>
               <Suspense fallback={<Loading />}>
                 <FirebaseContext.Consumer>
                   {(firebase) => <Login firebase={firebase} />}
                 </FirebaseContext.Consumer>
               </Suspense>
             </Route>
-            <Route exact path={'/signup'}>
+            <Route exact path={SIGN_UP}>
               <Suspense fallback={<Loading />}>
                 <FirebaseContext.Consumer>
                   {(firebase) => <SignUp firebase={firebase} />}
                 </FirebaseContext.Consumer>
               </Suspense>
             </Route>
-            <Route exact path={'/resetPassword'}>
+            <Route exact path={RESET_PASSWORD}>
               <Suspense fallback={<Loading />}>
                 <FirebaseContext.Consumer>
                   {(firebase) => <ResetPassword firebase={firebase} />}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormItem from '../../FormItem/FormItem';
+import FormItem from '../../Form/FormItem/FormItem';
 import { validateEmail } from '../../../utils/Utils';
 import PropTypes from 'prop-types';
 import { activateModal, deactivateModal } from '../../../actions/modal.actions';

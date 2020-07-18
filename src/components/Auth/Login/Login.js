@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormItem from '../../FormItem/FormItem';
+import FormItem from '../../Form/FormItem/FormItem';
 import styles from './Login.module.css';
 import CancelButton from '../../Buttons/CancelButton/CancelButton';
 import ValidationFormSubmitButton from '../../Buttons/ValidationButton/ValidationFormSubmitButton';
@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import Modal from '../../Modal/Modal';
 import Form from '../../Form/Form';
+import { RESET_PASSWORD, SIGN_UP } from '../../../constants/routes';
 
 class Login extends Component {
   state = {
@@ -61,12 +62,12 @@ class Login extends Component {
             />
             <span className={styles.SignUpText}>
               You do not have an account ? &nbsp;
-              <Link exact={'true'} to={'/signup'}>
+              <Link exact={'true'} to={SIGN_UP}>
                 Sign up
               </Link>
             </span>
             <span className={styles.SignUpText}>
-              <Link exact={'true'} to={'/resetPassword'}>
+              <Link exact={'true'} to={RESET_PASSWORD}>
                 Forgot password ?
               </Link>
             </span>

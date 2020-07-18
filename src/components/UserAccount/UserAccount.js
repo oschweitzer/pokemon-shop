@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Section from '../../hoc/Section/Section';
 import styles from './UserAccount.module.css';
-import FormItem from '../FormItem/FormItem';
+import FormItem from '../Form/FormItem/FormItem';
 import { validatePassword } from '../../utils/Utils';
 import CancelButton from '../Buttons/CancelButton/CancelButton';
 import ValidationFormSubmitButton from '../Buttons/ValidationButton/ValidationFormSubmitButton';
 import ValidationButton from '../Buttons/ValidationButton/ValidationButton';
 import { withRouter } from 'react-router-dom';
+import { SIGN_IN } from '../../constants/routes';
 
 class UserAccount extends Component {
   state = {
@@ -22,7 +23,7 @@ class UserAccount extends Component {
     if (this.props.isLoggedIn) {
       this.props.displayCart();
     } else {
-      this.props.history.push('/signin');
+      this.props.history.push(SIGN_IN);
     }
   }
 
