@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import { act } from '@testing-library/react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import Cart from './Cart';
 import configureStore from 'redux-mock-store';
 
-describe('App component', () => {
+describe('Cart component', () => {
   it('should render', () => {
     const mockStore = configureStore();
     const div = document.createElement('div');
@@ -14,19 +14,13 @@ describe('App component', () => {
       ReactDOM.render(
         <Provider
           store={mockStore({
-            modalReducer: {
-              isModalActivated: false,
-            },
-            navBarReducer: {
-              displayCart: false,
-            },
-            authReducer: {
-              email: '',
+            cartReducer: {
+              total: 10,
             },
           })}
         >
           <BrowserRouter>
-            <App />
+            <Cart />
           </BrowserRouter>
         </Provider>,
         div,

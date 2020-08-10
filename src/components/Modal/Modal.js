@@ -32,11 +32,7 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-    PropTypes.func,
-  ]),
+  children: PropTypes.func.isRequired,
   activateModal: PropTypes.func,
   deactivateModal: PropTypes.func,
   isModalActivated: PropTypes.bool,

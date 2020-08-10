@@ -21,18 +21,22 @@ class PokemonItem extends Component {
     this.source = CancelToken.source();
     this._isMounted = true;
     try {
-      const { data } = await axios.get(this.props.pokemonUrl, {
-        canceltoken: this.source.token,
-      });
-      if (this._isMounted) {
-        this.setState({
-          pokedexNumber: data.id,
-          name: `${data.name[0].toUpperCase()}${data.name.substring(1)}`,
-          imageUrl: data.sprites.front_default,
-        });
-      }
+      await this.getPokemonData();
     } catch (err) {
       console.error(err.message);
+    }
+  }
+
+  async getPokemonData() {
+    const { data } = await axios.get(this.props.pokemonUrl, {
+      canceltoken: this.source.token,
+    });
+    if (this._isMounted) {
+      this.setState({
+        pokedexNumber: data.id,
+        name: `${data.name[0].toUpperCase()}${data.name.substring(1)}`,
+        imageUrl: data.sprites.front_default,
+      });
     }
   }
 
