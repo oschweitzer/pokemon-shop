@@ -1,18 +1,47 @@
-import React from 'react';
-import pokeball from '../../assets/pokeball.png'
+import React, { useEffect } from 'react';
+import pokeball from '../../assets/pokeball.png';
 import styles from './Home.module.css';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/all';
+import { hideCart } from '../../actions/navBar.actions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Section from '../../hoc/Section/Section';
 
+const Home = (props) => {
+  useEffect(() => {
+    props.hideCart();
+  });
 
-const Home = () => {
   return (
+    <React.Fragment>
       <div className={styles.Home}>
+        <img
+          className={[styles.Pokeball, styles.Image].join(' ')}
+          alt={'Pokeball'}
+          src={pokeball}
+        />
         <p className={styles.Description}>
-          "Shop to pick your favorite pokemon, it's free and delivered to your home."
+          <FaQuoteLeft /> Pick your favorite pokemon, add them to your cart and
+          they will delivered to you, all free !!! <FaQuoteRight />
         </p>
-        <img className={styles.Pokeball} alt={'Pokeball'} src={pokeball}/>
       </div>
+      <img
+        src={'https://i.imgur.com/E9EHO5l.gif'}
+        alt={'Pikachu'}
+        className={styles.Image}
+      />
+    </React.Fragment>
+  );
+};
 
-  )
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hideCart: () => dispatch(hideCart()),
+  };
+};
 
-export default Home;
+Home.propTypes = {
+  hideCart: PropTypes.func,
+};
+
+export default Section(connect(null, mapDispatchToProps)(Home));

@@ -1,32 +1,52 @@
 .NavBar {
-    display: flex;
-    justify-content: left;
-    align-content: center;
-    width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  width: 100%;
+  max-height: 10vh;
 }
 
 .NavBar ul {
-    display: flex;
-    list-style-type: none;
-    justify-content: center;
-    align-content: center;
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
 }
 
 .NavBar li {
-    margin: 0 1em 0 1em;
+  margin: 0 1em 0 1em;
 }
 
 .NavBar li a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .NavBar li a:hover {
-    text-decoration: underline;
-    color: #ee1515;
+  text-decoration: underline;
 }
 
 .Logo {
-    width: 8%;
+  width: 8%;
+  padding: 10px;
 }
 
+.Logo:hover {
+  cursor: pointer;
+}
+
+.NavBarItemActive {
+  background-color: #bd3736;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.RightContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: center;
+  justify-self: flex-end;
+}

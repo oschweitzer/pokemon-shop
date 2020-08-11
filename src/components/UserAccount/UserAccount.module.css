@@ -1,0 +1,31 @@
+.UserAccount {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: left;
+  margin-top: 2%;
+}
+
+.UserAccount span {
+  margin: 1%;
+}
+
+.UpdatePasswordForm {
+  margin-top: 2%;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 2px #ddd;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+.UpdatePasswordButton {
+  justify-self: center;
+  width: 3%;
+}
+
+.Actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}

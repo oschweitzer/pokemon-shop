@@ -1,0 +1,43 @@
+.Items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ItemQuantity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.QuantityInput {
+  width: 15%;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.QuantityInput:hover {
+  box-shadow: 2px 2px 2px #aaa;
+}
+
+.RemoveItemButton {
+  border: none !important;
+  background-color: transparent !important;
+  color: #bd3736 !important;
+  margin-left: 10% !important;
+}
+
+.RemoveItemButton:hover {
+  box-shadow: 2px 2px 2px #aaa !important;
+  border-radius: 25% !important;
+}

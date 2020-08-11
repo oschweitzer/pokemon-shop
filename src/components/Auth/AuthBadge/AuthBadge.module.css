@@ -1,0 +1,28 @@
+.AuthButton {
+  border: none;
+  background-color: transparent;
+  align-self: center;
+}
+
+.AuthButton:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.AuthSpan {
+  color: white;
+  font-weight: normal;
+  font-size: 0.5em;
+  padding: 0;
+  margin-right: 2%;
+  margin-left: 2%;
+  align-self: center;
+}
+
+.LoggedIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-right: 2%;
+}

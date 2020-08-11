@@ -1,0 +1,19 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.Form h3 {
+  font-weight: bold;
+}
+
+.Actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  margin-top: 2%;
+}
