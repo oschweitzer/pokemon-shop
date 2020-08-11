@@ -1,7 +1,60 @@
 version: 2.1
+jobs:
+  install:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+  lint:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm run lint
+
+  test:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm run test
+
+  build:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm run build
+
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@4.0.0
+
 workflows:
-  node-tests:
+  tests:
     jobs:
-      - node/test
+      - install
+      - lint:
+          requires:
+            - install
+      - test:
+          requires:
+            - install
+  build:
+    jobs:
+      - install
+      - build:
+          requires:
+            - install
