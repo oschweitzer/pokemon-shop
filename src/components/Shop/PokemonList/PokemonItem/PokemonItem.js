@@ -4,6 +4,7 @@ import * as axios from 'axios';
 import { connect } from 'react-redux';
 import { addItem } from '../../../../actions/cart.actions';
 import PropTypes from 'prop-types';
+import Loading from '../../../Loading/Loading';
 
 class PokemonItem extends Component {
   state = {
@@ -11,6 +12,7 @@ class PokemonItem extends Component {
     name: '',
     imageUrl: '',
     addAnimation: false,
+    loading: true,
   };
 
   source = null;
@@ -66,21 +68,37 @@ class PokemonItem extends Component {
     }
   };
 
+  onImageLoad = () => {
+    this.setState({ loading: false });
+  };
+
   render() {
     const basicCssClasses = this.props.disabled
       ? styles.PokemonItem
       : [styles.PokemonItem, styles.PokemonItemHover].join(' ');
-    const finalCssClasses = this.state.addAnimation
+    const cssClassesWithAnimation = this.state.addAnimation
       ? [basicCssClasses, styles.AddedToCartAnimation].join(' ')
       : basicCssClasses;
+    const loading = this.state.loading ? <Loading /> : null;
+    const finalCssClasses = this.state.loading
+      ? styles.Hide
+      : cssClassesWithAnimation;
 
     return (
-      <div className={finalCssClasses} onClick={this.pokemonSelectionHandler}>
-        <img alt={`Pokemon ${this.state.name}`} src={this.state.imageUrl} />
-        <span className={styles.PokemonTextData}>
-          #{this.state.pokedexNumber}
-        </span>
-        <span className={styles.PokemonTextData}>{this.state.name}</span>
+      <div className={styles.FlexContainer}>
+        <div className={styles.PokemonItem}>{loading}</div>
+
+        <div className={finalCssClasses} onClick={this.pokemonSelectionHandler}>
+          <img
+            alt={`Pokemon ${this.state.name}`}
+            src={this.state.imageUrl}
+            onLoad={this.onImageLoad}
+          />
+          <span className={styles.PokemonTextData}>
+            #{this.state.pokedexNumber}
+          </span>
+          <span className={styles.PokemonTextData}>{this.state.name}</span>
+        </div>
       </div>
     );
   }
