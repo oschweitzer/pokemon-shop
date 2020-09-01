@@ -14,7 +14,7 @@ module.exports = {
   parser: "babel-eslint",
   "ignorePatterns": [
     "node_modules/",
-    ".eslintrc.js"
+    ".eslintrc.cjs"
   ],
   "plugins": [
     "react",
