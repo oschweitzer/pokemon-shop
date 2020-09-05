@@ -8,7 +8,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "npx eslint . --ext .js,.jsx",
-    "lint:fix": "npx eslint --fix . --ext .js,.jsx",
+    "lint:fix": "npx eslint -c .eslintrc.cjs --fix . --ext .js,.jsx",
     "lint-css": "npx stylelint src/**/*.css",
     "lint-css:fix": "npx stylelint src/**/*.css --fix"
   },

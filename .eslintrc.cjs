@@ -4,7 +4,10 @@ module.exports = {
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
-    }
+    },
+    "ignorePatterns": [
+      "**/NativeApp/*"
+    ]
   },
   env: {
     browser: true,
