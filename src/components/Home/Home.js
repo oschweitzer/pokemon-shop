@@ -22,7 +22,7 @@ const Home = (props) => {
         />
         <p className={styles.Description}>
           <FaQuoteLeft /> Pick your favorite pokemon, add them to your cart and
-          they will delivered to you, all free !!! <FaQuoteRight />
+          they will be delivered to you, all free !!! <FaQuoteRight />
         </p>
       </div>
       <img
