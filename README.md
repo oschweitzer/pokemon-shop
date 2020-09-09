@@ -5,6 +5,8 @@ This ReactJS/Redux application is a shopping website where you can add pokemons 
  course).
  
  It uses [Firebase](https://firebase.google.com/?hl=fr) to handle authentication.
+ 
+ [![Youtube video link](https://img.youtube.com/vi/Fj_R3ZHXeLo/0.jpg)]( https://youtu.be/Fj_R3ZHXeLo)
 
 ## Prerequisites
 
