@@ -42,7 +42,12 @@ const Order = (props) => {
           </tbody>
         </table>
         <form onSubmit={onValidationHandler} className={styles.Actions}>
-          <button className={styles.PrintButton} onClick={window.print}>
+          <button
+            className={styles.PrintButton}
+            onClick={window.print}
+            title={'Print order'}
+            type={'button'}
+          >
             <FcPrint />
           </button>
           <ValidationFormSubmitButton value={'OK'} />
