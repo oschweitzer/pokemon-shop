@@ -1,0 +1,35 @@
+.Button {
+  width: 30%;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  font-size: inherit;
+}
+
+.Button:disabled {
+  background-color: #ccc;
+  color: #666;
+}
+
+.Button:hover:not(:disabled) {
+  box-shadow: 2px 2px 2px #aaa;
+}
+
+.Primary {
+  background-color: #56cbf9;
+}
+
+.Primary:hover:not(:disabled) {
+  background-color: #00af54;
+}
+
+.Danger {
+  background-color: #bd3736;
+}
+
+.Danger:hover:not(:disabled) {
+  background-color: #fe5f55;
+}

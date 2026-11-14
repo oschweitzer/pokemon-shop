@@ -22,7 +22,6 @@
 .LoggedIn {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  place-content: center center;
   margin-right: 2%;
 }

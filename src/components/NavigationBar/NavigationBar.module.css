@@ -1,7 +1,6 @@
 .NavBar {
   display: flex;
-  justify-content: flex-start;
-  align-content: center;
+  place-content: center flex-start;
   width: 100%;
   max-height: 10vh;
 }
@@ -9,13 +8,12 @@
 .NavBar ul {
   display: flex;
   list-style-type: none;
-  justify-content: center;
-  align-content: center;
+  place-content: center center;
   align-self: center;
 }
 
 .NavBar li {
-  margin: 0 1em 0 1em;
+  margin: 0 1em;
 }
 
 .NavBar li a {
@@ -27,9 +25,14 @@
   text-decoration: underline;
 }
 
-.Logo {
+.LogoLink {
   width: 8%;
   padding: 10px;
+}
+
+.Logo {
+  display: block;
+  width: 100%;
 }
 
 .Logo:hover {
@@ -46,7 +49,6 @@
   flex-grow: 1;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  align-content: center;
+  place-content: center flex-end;
   justify-self: flex-end;
 }
