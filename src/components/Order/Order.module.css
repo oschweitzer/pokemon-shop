@@ -1,5 +1,5 @@
 .PrintButton {
-  background-color: #fe5f55 !important;
+  background-color: #fe5f55;
   width: 30%;
   border: none;
   border-radius: 5px;
@@ -10,11 +10,11 @@
 
 .PrintButton:hover {
   box-shadow: 2px 2px 2px #aaa;
-  background-color: #00af54 !important;
+  background-color: #00af54;
 }
 
 .RecapTable th,
-td {
+.RecapTable td {
   border: 1px solid #aaa;
 }
 

@@ -7,7 +7,7 @@
 }
 
 .Modal {
-  background-color: rgba(40, 44, 52, 0.3) !important;
+  background-color: rgb(40 44 52 / 30%);
 }
 
 .AppHeader {

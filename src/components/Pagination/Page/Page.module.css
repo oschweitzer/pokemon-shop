@@ -1,18 +1,26 @@
 .Page {
   margin: 2%;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px;
 }
 
-.Page:hover {
+.PageButton {
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+}
+
+.PageButton:hover {
   cursor: pointer;
   text-decoration: underline;
   font-weight: bold;
 }
 
 .UnClickable {
-  text-decoration: none !important;
-  cursor: default !important;
-  font-weight: normal !important;
+  text-decoration: none;
+  cursor: default;
+  font-weight: normal;
 }
 
 .CurrentPage {

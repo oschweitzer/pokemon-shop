@@ -1,9 +1,8 @@
 .FormItem {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  margin: 1% 0 1% 0;
+  place-content: center center;
+  margin: 1% 0;
   width: 80%;
 }
 
@@ -27,8 +26,7 @@
 .Row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-content: center;
+  place-content: center center;
 }
 
 .Hidden {

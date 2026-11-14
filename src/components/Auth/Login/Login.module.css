@@ -1,9 +1,7 @@
 .LoginForm {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  flex-flow: column wrap;
+  place-content: center center;
 }
 
 .LoginForm h3 {

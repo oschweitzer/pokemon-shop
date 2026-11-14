@@ -1,4 +1,6 @@
 .Cart {
+  text-decoration: none;
+  color: inherit;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -12,8 +14,7 @@
   border: 1px solid antiquewhite;
   margin-right: 1%;
   display: flex;
-  justify-content: space-evenly;
-  align-content: center;
+  place-content: center space-evenly;
 }
 
 .CartBox:hover {
@@ -24,4 +25,16 @@
 
 .CartIcon {
   align-self: center;
+}
+
+.Badge {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0.2em 0.5em;
+  margin-right: 0.5em;
+  border-radius: 1em;
+  background-color: #f44336;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
 }

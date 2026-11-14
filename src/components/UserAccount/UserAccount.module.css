@@ -1,8 +1,7 @@
 .UserAccount {
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: left;
+  place-content: center left;
   margin-top: 2%;
 }
 
@@ -26,6 +25,5 @@
 .Actions {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-content: center;
+  place-content: center space-evenly;
 }

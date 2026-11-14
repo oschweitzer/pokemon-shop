@@ -1,69 +1,64 @@
 {
   "name": "pokemon-shop",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "npx eslint . --ext .js,.jsx",
-    "lint:fix": "npx eslint --fix . --ext .js,.jsx",
-    "lint-css": "npx stylelint src/**/*.css",
-    "lint-css:fix": "npx stylelint src/**/*.css --fix"
+  "description": "A Pokémon shopping cart built with React, Redux Toolkit, React Router and Firebase Authentication",
+  "author": "Olivier Schweitzer (https://www.oschweitzer.dev/)",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oschweitzer/pokemon-shop.git"
   },
   "type": "module",
-  "eslintConfig": {
-    "extends": "react-app"
+  "engines": {
+    "node": ">=22.22.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:cov": "vitest run --coverage"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "axios": "^0.21.2",
-    "firebase": "^7.16.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-icons": "^3.10.0",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
-    "redux": "^4.0.5",
-    "styled-components": "^5.1.1"
+    "@reduxjs/toolkit": "^2.14.0",
+    "@tanstack/react-query": "^5.107.1",
+    "firebase": "^13.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-icons": "^5.7.0",
+    "react-redux": "^9.3.1",
+    "react-router": "^8.5.1"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.3",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-testing-library": "^3.3.1",
-    "jest-environment-enzyme": "^7.1.2",
-    "jest-enzyme": "^7.1.2",
-    "prettier": "^2.0.5",
-    "react-test-renderer": "^16.13.1",
-    "redux-mock-store": "^1.5.4",
-    "stylelint": "^13.6.1",
-    "stylelint-config-standard": "^20.0.0"
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(react-icons)/)"
-    ]
+    "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.10",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "eslint-plugin-testing-library": "^7.16.2",
+    "globals": "^17.14.0",
+    "jsdom": "^31.0.1",
+    "prettier": "^3.10.1",
+    "stylelint": "^18.0.0",
+    "stylelint-config-standard": "^41.0.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
   }
 }
